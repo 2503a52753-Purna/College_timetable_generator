@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Timetable System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-page">
+    <main class="login-card portal-card">
+        <p class="eyebrow">College Timetable System</p>
+        <h1>Welcome</h1>
+        <p class="login-copy">Choose how you would like to continue.</p>
+        <div class="portal-options">
+            <a class="portal-option portal-admin" href="{{ url_for('admin_login') }}?role=college">
+                <span class="portal-icon">A</span>
+                <span><strong>College Admin</strong><small>Manage your college data and timetable</small></span>
+                <span aria-hidden="true">-&gt;</span>
+            </a>
+            <a class="portal-option portal-superadmin" href="{{ url_for('admin_login') }}?role=super">
+                <span class="portal-icon">S</span>
+                <span><strong>Super Admin</strong><small>Manage all colleges, admins, and assignments</small></span>
+                <span aria-hidden="true">-&gt;</span>
+            </a>
+            <a class="portal-option portal-viewer" href="{{ url_for('timetables') }}">
+                <span class="portal-icon">V</span>
+                <span><strong>View timetable</strong><small>Browse schedules as a student or faculty member</small></span>
+                <span aria-hidden="true">-&gt;</span>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

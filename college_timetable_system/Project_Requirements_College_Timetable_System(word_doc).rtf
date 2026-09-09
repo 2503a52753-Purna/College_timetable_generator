@@ -1,0 +1,99 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}{\f1 Cambria;}}
+\paperw11907\paperh16840\margl1440\margr1440\margt1200\margb1200
+\viewkind4\titlepg
+\pard\qc\sa240\f1\fs36\b Project Requirements\b0\par
+\pard\qc\sa120\f0\fs28 College Timetable Management System\par
+\pard\qc\sa360\fs22 Academic Project Documentation\par
+\pard\sa180\fs24\b 1. Project Name\b0\par
+\pard\sa240\fs22 College Timetable Management System\par
+\pard\sa180\fs24\b 2. Project Introduction\b0\par
+\pard\sa180\fs22 The College Timetable Management System is a web-based application for creating, managing, optimizing, and publishing college timetables. It allows administrators to maintain colleges, departments, sections, subjects, faculty members, classrooms, and academic periods through a protected dashboard.\par
+\pard\sa180\fs22 The system also provides a public timetable portal where students and faculty can find schedules by selecting a college, department, section, or faculty member. An automated scheduling engine assigns subjects, faculty, classrooms, and periods while attempting to avoid timetable conflicts.\par
+\pard\sa180\fs24\b 3. Problem Statement\b0\par
+\pard\li360\sa120\fs22 Manual timetable preparation is time-consuming and can cause clashes between faculty, classrooms, sections, and academic periods.\par
+\pard\li360\sa240\fs22 Colleges need a centralized system to generate, manage, and publish accurate timetables quickly and efficiently.\par
+\pard\sa180\fs24\b 4. Existing System and Proposed System\b0\par
+\pard\sa120\fs23\b Existing System\b0\par
+\pard\li360\sa120\fs22\bullet\tab Timetables are commonly prepared manually using paper, spreadsheets, or separate files.\par
+\pard\li360\sa120\fs22\bullet\tab Updating schedules requires repeated manual changes and coordination.\par
+\pard\li360\sa120\fs22\bullet\tab Conflicts involving rooms, faculty, sections, and periods may be missed.\par
+\pard\li360\sa240\fs22\bullet\tab Students and faculty may not have one reliable, up-to-date place to view schedules.\par
+\pard\sa120\fs23\b Proposed System\b0\par
+\pard\li360\sa120\fs22\bullet\tab A centralized Flask web application stores timetable data in an SQLite database.\par
+\pard\li360\sa120\fs22\bullet\tab Administrators can add, edit, and delete colleges, departments, sections, subjects, faculty, and classrooms.\par
+\pard\li360\sa120\fs22\bullet\tab The scheduling engine assigns available periods and resources while checking section, faculty, and classroom conflicts.\par
+\pard\li360\sa120\fs22\bullet\tab A public portal allows timetable filtering for students and faculty.\par
+\pard\li360\sa240\fs22\bullet\tab Role-based administration protects management functions and supports college-level access.\par
+\pard\sa180\fs24\b 5. Technical Requirements\b0\par
+\pard\sa120\fs23\b Software Requirements\b0\par
+\pard\li360\sa120\fs22\bullet\tab Operating System: Windows, Linux, or macOS\par
+\pard\li360\sa120\fs22\bullet\tab Programming Language: Python 3\par
+\pard\li360\sa120\fs22\bullet\tab Web Framework: Flask 3.0.3\par
+\pard\li360\sa120\fs22\bullet\tab Database: SQLite\par
+\pard\li360\sa120\fs22\bullet\tab Web Server: Flask development server or Gunicorn 23.0.0 for deployment\par
+\pard\li360\sa120\fs22\bullet\tab Browser: Current Chrome, Edge, Firefox, or Safari\par
+\pard\li360\sa120\fs22\bullet\tab Python packages: Flask-Cors 4.0.0 and the packages listed in requirements.txt\par
+\pard\sa120\fs23\b Hardware Requirements\b0\par
+\pard\li360\sa120\fs22\bullet\tab Processor: Dual-core processor or better\par
+\pard\li360\sa120\fs22\bullet\tab Memory: Minimum 4 GB RAM\par
+\pard\li360\sa120\fs22\bullet\tab Storage: At least 500 MB of free space, excluding future database growth\par
+\pard\li360\sa240\fs22\bullet\tab Network: Internet or local network access for multi-user deployment\par
+\pard\sa180\fs24\b 6. Frontend and Backend Technologies\b0\par
+\pard\sa120\fs23\b Frontend Technologies\b0\par
+\pard\li360\sa120\fs22\bullet\tab HTML5: Page structure and Jinja template integration\par
+\pard\li360\sa120\fs22\bullet\tab CSS3: Layout, responsive styling, dashboard, forms, and timetable presentation\par
+\pard\li360\sa120\fs22\bullet\tab JavaScript: Dynamic forms, API requests, filtering, timetable rendering, and admin interactions\par
+\pard\li360\sa240\fs22\bullet\tab Fetch API: Communication between the browser and Flask REST-style endpoints\par
+\pard\sa120\fs23\b Backend Technologies\b0\par
+\pard\li360\sa120\fs22\bullet\tab Python: Application logic and timetable generation\par
+\pard\li360\sa120\fs22\bullet\tab Flask: Web routing, templates, sessions, and API endpoints\par
+\pard\li360\sa120\fs22\bullet\tab SQLite: Storage for colleges, departments, sections, subjects, faculty, classrooms, periods, users, and timetables\par
+\pard\li360\sa120\fs22\bullet\tab Flask-Cors: Cross-origin request support\par
+\pard\li360\sa120\fs22\bullet\tab Werkzeug security: Password hashing and password verification\par
+\pard\li360\sa240\fs22\bullet\tab Gunicorn and Render: Production deployment support\par
+\pard\sa180\fs24\b 7. AI Tools and Techniques Used\b0\par
+\pard\sa180\fs22 The project uses a custom AI-style timetable optimization engine implemented in Python. It is exposed through the /api/generate-ai-timetable endpoint and uses constraint-based scheduling techniques.\par
+\pard\li360\sa120\fs22\bullet\tab It creates a scheduling queue based on each subject's required hours per week.\par
+\pard\li360\sa120\fs22\bullet\tab It selects suitable faculty members according to department and subject relationships.\par
+\pard\li360\sa120\fs22\bullet\tab It selects suitable classrooms, including lab rooms for laboratory subjects when available.\par
+\pard\li360\sa120\fs22\bullet\tab It checks whether the faculty member, classroom, and section are already occupied in a period.\par
+\pard\li360\sa120\fs22\bullet\tab It calculates an optimization score based on successfully scheduled classes and reports unresolved conflicts.\par
+\pard\li360\sa240\fs22\bullet\tab The current implementation does not call an external machine-learning model or generative-AI API; it is a rule-based constraint-satisfaction and heuristic optimization module.\par
+\pard\sa180\fs24\b 8. Frontend and Backend Source Code\b0\par
+\pard\sa120\fs23\b Frontend Code\b0\par
+\pard\sa120\fs22 The frontend source code is organized as follows:\par
+\pard\li360\sa120\fs22\bullet\tab templates/public.html: Public timetable page structure, college selector, student/faculty filters, and timetable table.\par
+\pard\li360\sa120\fs22\bullet\tab templates/index.html: Protected administrator dashboard and master-data management interface.\par
+\pard\li360\sa120\fs22\bullet\tab static/css/style.css: Page layout, responsive design, forms, buttons, tables, and dashboard styling.\par
+\pard\li360\sa120\fs22\bullet\tab static/js/public.js: Loads public timetable data, filters records, and renders the timetable matrix.\par
+\pard\li360\sa240\fs22\bullet\tab static/js/script.js: Handles admin records, API requests, forms, timetable display, and AI generation.\par
+\pard\sa120\fs22\b Representative HTML code:\b0\par
+\pard\li360\sa120\f0\fs18 <link rel="stylesheet" href="/static/css/style.css">\par
+\pard\li360\sa120\fs18 <select id="filter-college"><option value="">Select college</option></select>\par
+\pard\li360\sa240\fs18 <script src="/static/js/public.js"></script>\par
+\pard\sa120\fs22\b Representative JavaScript code:\b0\par
+\pard\li360\sa120\f0\fs18 async function loadPublicTimetable() \{\par
+\pard\li720\sa120\fs18 const response = await fetch('/api/public-timetable');\par
+\pard\li720\sa120\fs18 const data = await response.json();\par
+\pard\li720\sa120\fs18 renderPublicTimetable();\par
+\pard\li360\sa240\fs18 \}\par
+\pard\sa120\fs23\b Backend Code\b0\par
+\pard\sa120\fs22 The backend source code is mainly contained in app.py. It creates the Flask application, connects to SQLite, manages authentication, serves templates, exposes API endpoints, and generates timetables. wsgi.py exposes the application for deployment with Gunicorn.\par
+\pard\sa120\fs22\b Representative Flask route:\b0\par
+\pard\li360\sa120\f0\fs18 @app.route('/api/public-timetable', methods=['GET'])\par
+\pard\li360\sa120\fs18 def get_public_timetable():\par
+\pard\li720\sa120\fs18 conn = get_db()\par
+\pard\li720\sa120\fs18 rows = conn.execute('SELECT * FROM timetable').fetchall()\par
+\pard\li720\sa120\fs18 return jsonify([dict(row) for row in rows])\par
+\pard\sa120\fs22\b Representative AI scheduling route:\b0\par
+\pard\li360\sa120\f0\fs18 @app.route('/api/generate-ai-timetable', methods=['POST'])\par
+\pard\li360\sa120\fs18 def generate_ai_timetable():\par
+\pard\li720\sa120\fs18 # Select valid faculty, rooms, and periods.\par
+\pard\li720\sa120\fs18 # Reject occupied faculty, room, or section time slots.\par
+\pard\li720\sa120\fs18 # Insert successful assignments into the timetable table.\par
+\pard\li360\sa240\fs18 return jsonify({'status': 'success', 'score': score})\par
+\pard\sa180\fs22 The complete implementation is available in the project folders templates, static/css, static/js, and in the backend files app.py and wsgi.py.\par
+\pard\sa180\fs24\b Conclusion\b0\par
+\pard\sa180\fs22 The proposed College Timetable Management System reduces manual effort, improves timetable consistency, centralizes academic resource data, and gives students and faculty convenient access to published schedules.\par
+}

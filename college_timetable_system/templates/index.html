@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI College Timetable Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>🎓 Timetable AI</h2>
+                <p>Admin Dashboard</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" onclick="switchTab('dashboard', event)">📊 Dashboard</a>
+                <a href="#" class="nav-link" onclick="switchTab('master', event)">⚙️ Master Management</a>
+                <a href="#" class="nav-link" onclick="switchTab('timetable', event)">📅 View Timetable</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1>College Timetable & Resource Scheduler</h1>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <strong>{{ 'Super Administrator' if user_role == 'super' else 'College Administrator' }}</strong>
+                        {% if selected_college_id %}
+                            <span>• College ID {{ selected_college_id }}</span>
+                        {% endif %}
+                    </div>
+                    <form method="post" action="{{ url_for('admin_logout') }}"><button class="btn btn-logout" type="submit">Sign out</button></form>
+                </div>
+            </header>
+
+            <section id="tab-dashboard" class="tab-pane active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>System Status</h3>
+                        <p class="stat-val" style="color: #2e7d32;">Online & Ready</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Optimization Score</h3>
+                        <p class="stat-val" id="score-display">-- / 100</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Conflict State</h3>
+                        <p class="stat-val" id="conflict-display">No Conflicts</p>
+                    </div>
+                </div>
+
+                <div class="ai-control-box">
+                    <h2>🤖 AI Timetable Engine</h2>
+                    <p>Run automated constraint-satisfaction scheduling across all active departments, faculty availability matrices, and lab assets.</p>
+                    <button class="btn btn-primary" onclick="generateAITimetable()">🚀 Generate AI Timetable</button>
+                </div>
+
+                <div class="suggestions-container" id="ai-suggestions-box">
+                    <h3>💡 AI Insights & Suggestions</h3>
+                    <ul id="suggestion-list">
+                        <li>Run the AI generator to compute resource health metrics.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="tab-master" class="tab-pane">
+                <div class="master-header">
+                    <h2>Master Entities Configuration</h2>
+                    <div class="entity-tabs">
+                        <button class="sub-tab active" onclick="switchEntity('colleges', event)">Colleges</button>
+                        {% if user_role == 'super' %}
+                        <button class="sub-tab" onclick="switchEntity('admin_users', event)">Admin Access</button>
+                        <button class="sub-tab" onclick="switchEntity('admin_college_access', event)">College Assignments</button>
+                        {% endif %}
+                        <button class="sub-tab" onclick="switchEntity('departments', event)">Departments</button>
+                        <button class="sub-tab" onclick="switchEntity('sections', event)">Sections</button>
+                        <button class="sub-tab" onclick="switchEntity('subjects', event)">Subjects</button>
+                        <button class="sub-tab" onclick="switchEntity('faculty', event)">Faculty</button>
+                        <button class="sub-tab" onclick="switchEntity('classrooms', event)">Classrooms</button>
+                    </div>
+                </div>
+
+                <div class="master-body">
+                    <form id="entity-form" onsubmit="handleFormSubmit(event)">
+                        <input type="hidden" id="entity-id">
+                        <div id="form-fields" class="form-grid"></div>
+                        <button type="submit" class="btn btn-success">Save Record</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">Clear</button>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead id="table-head"></thead>
+                            <tbody id="table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-timetable" class="tab-pane">
+                <div class="filter-toolbar">
+                    <h2>Timetable Preview</h2>
+                    <div class="filters">
+                        <select id="filter-college" onchange="filterTimetable()"><option value="">All Colleges</option></select>
+                        <select id="filter-dept" onchange="filterTimetable()"><option value="">All Departments</option></select>
+                        <select id="filter-section" onchange="filterTimetable()"><option value="">All Sections</option></select>
+                        <select id="filter-faculty" onchange="filterTimetable()"><option value="">All Faculty</option></select>
+                        <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / Download PDF</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive timetable-grid-wrap">
+                    <table class="data-table" id="timetable-matrix">
+                        <thead>
+                            <tr>
+                                <th>Time Slot</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timetable-matrix-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

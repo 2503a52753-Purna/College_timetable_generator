@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Timetable AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="auth-page">
+    <main class="login-card">
+        <p class="eyebrow">Timetable AI</p>
+        <h1>{{ 'Super Admin sign in' if request.args.get('role') == 'super' else 'College Admin sign in' }}</h1>
+        <p class="login-copy">
+            {% if request.args.get('role') == 'super' %}
+                Manage all colleges, admins, and assignments securely.
+            {% else %}
+                Manage your college data and generate schedules securely.
+            {% endif %}
+        </p>
+        {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
+        <form method="post" action="{{ url_for('admin_login', next=request.args.get('next', '')) }}">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+            <button class="btn btn-login" type="submit">Sign in</button>
+        </form>
+        <a class="back-link" href="{{ url_for('index') }}">View public timetables</a>
+    </main>
+</body>
+</html>
