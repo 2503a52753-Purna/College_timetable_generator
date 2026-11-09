@@ -348,3 +348,4 @@ function generateAITimetable() {
         alert('🎉 AI Timetable Generation Complete! Optimization Score: 100/100.');
     }, 1000);
 }
+
