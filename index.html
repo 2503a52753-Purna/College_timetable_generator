@@ -3,243 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Timetable & AI Resource Scheduler</title>
+    <title>College Timetable System</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            padding: 14px 32px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .nav-links {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-        .nav-links a, .nav-links button {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 14px;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        .nav-links a:hover, .nav-links button:hover {
-            background: #eef2ff;
-            color: var(--primary);
-        }
-        .btn-gh {
-            background: #24292f !important;
-            color: #ffffff !important;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-gh:hover {
-            background: #000000 !important;
-            color: #ffffff !important;
-        }
-        .stats-badge-row {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 18px;
-        }
-        .stat-pill {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .stat-pill strong {
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-right: 4px;
-        }
-        .search-bar-wrap {
-            margin-top: 12px;
-            position: relative;
-        }
-        .search-bar-wrap input {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            background: #ffffff;
-        }
-        .print-btn {
-            background: var(--primary);
-            color: white !important;
-            border-radius: 6px;
-            padding: 9px 16px !important;
-        }
-        @media print {
-            .nav-bar, .public-controls, .viewer-choice, .college-directory, .ai-control-box, .print-btn, .search-bar-wrap {
-                display: none !important;
-            }
-            .public-shell {
-                padding: 0 !important;
-                width: 100% !important;
-            }
-            .public-table-wrap {
-                border: none !important;
-                padding: 0 !important;
-            }
-        }
-    </style>
 </head>
-<body class="public-page">
-    <nav class="nav-bar">
-        <a href="#top" class="nav-brand">
-            <span>🎓</span>
-            <span>College Timetable AI</span>
-        </a>
-        <div class="nav-links">
-            <a href="#timetable-section">📅 Timetable</a>
-            <a href="#colleges-section">🏛️ Directory</a>
-            <a href="#ai-section">🤖 AI Scheduler</a>
-            <button class="print-btn" onclick="printTimetable()">🖨️ Print / PDF</button>
-            <a class="btn-gh" href="https://github.com/2503a52753-Purna/College_timetable_generator" target="_blank" rel="noopener">
-                <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                </svg>
-                GitHub
+<body class="auth-page">
+    <main class="login-card portal-card">
+        <p class="eyebrow">College Timetable System</p>
+        <h1>Welcome</h1>
+        <p class="login-copy">Choose how you would like to continue.</p>
+        <div class="portal-options">
+            <a class="portal-option portal-admin" href="admin-login.html?role=college">
+                <span class="portal-icon">A</span>
+                <span><strong>College Admin</strong><small>Manage your college data and timetable</small></span>
+                <span aria-hidden="true">-&gt;</span>
+            </a>
+            <a class="portal-option portal-superadmin" href="admin-login.html?role=super">
+                <span class="portal-icon">S</span>
+                <span><strong>Super Admin</strong><small>Manage all colleges, admins, and assignments</small></span>
+                <span aria-hidden="true">-&gt;</span>
+            </a>
+            <a class="portal-option portal-viewer" href="timetables.html">
+                <span class="portal-icon">V</span>
+                <span><strong>View timetable</strong><small>Browse schedules as a student or faculty member</small></span>
+                <span aria-hidden="true">-&gt;</span>
             </a>
         </div>
-    </nav>
-
-    <main class="public-shell" id="top">
-        <header class="public-header">
-            <div>
-                <p class="eyebrow">College Timetable System</p>
-                <h1>College Timetables & Resource Scheduler</h1>
-                <p class="public-subtitle">Explore automated weekly lecture schedules by university, department, batch, or faculty.</p>
-                
-                <div class="stats-badge-row">
-                    <span class="stat-pill"><strong id="total-entries-count">469</strong> Scheduled Lectures</span>
-                    <span class="stat-pill"><strong id="total-sections-count">250</strong> Active Batches</span>
-                    <span class="stat-pill"><strong id="total-faculty-count">56</strong> Faculty Members</span>
-                    <span class="stat-pill"><strong id="score-display">100 / 100</strong> Optimization Score</span>
-                </div>
-            </div>
-        </header>
-
-        <!-- Filter Controls -->
-        <section class="public-controls" id="timetable-section" aria-label="Timetable filters">
-            <div class="college-select-row">
-                <label>University / College
-                    <select id="filter-college">
-                        <option value="">Loading Colleges...</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="viewer-choice" style="margin-top: 16px; margin-bottom: 16px; padding: 0; border: none; background: transparent;">
-                <div class="viewer-choice-buttons">
-                    <button class="viewer-choice-button active" id="student-choice" type="button">👨‍🎓 Student Timetable</button>
-                    <button class="viewer-choice-button" id="faculty-choice" type="button">👨‍🏫 Faculty Timetable</button>
-                </div>
-            </div>
-
-            <div class="student-filters viewer-filters">
-                <label>Department
-                    <select id="filter-dept">
-                        <option value="">Select college first</option>
-                    </select>
-                </label>
-                <label>Batch / Section
-                    <select id="filter-section" disabled>
-                        <option value="">Select department first</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="faculty-filters viewer-filters hidden">
-                <label>Faculty Member
-                    <select id="filter-faculty">
-                        <option value="">Select college first</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="search-bar-wrap">
-                <input type="text" id="timetable-search" placeholder="🔍 Search lecture, subject name, faculty, or room...">
-            </div>
-        </section>
-
-        <!-- Published Timetable Matrix -->
-        <section class="public-table-wrap">
-            <div class="table-heading">
-                <h2>Published Weekly Schedule</h2>
-                <span id="result-count">Select a section</span>
-            </div>
-            <div class="table-responsive">
-                <table class="data-table" id="public-timetable">
-                    <thead>
-                        <tr>
-                            <th style="min-width: 140px;">Time slot</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                        </tr>
-                    </thead>
-                    <tbody id="timetable-matrix-body">
-                        <tr><td colspan="6" class="timetable-empty">Loading timetable data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- AI Scheduler Simulation -->
-        <section class="ai-control-box" id="ai-section" style="margin-top: 32px;">
-            <h2>🤖 AI Constraint Solver & Timetable Generator</h2>
-            <p>Our intelligent scheduling engine ensures zero room clashes, zero faculty overlaps, balanced credit hours, and lab space availability.</p>
-            <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
-                <button class="btn btn-primary" id="btn-run-ai" onclick="runAiScheduler()">⚡ Re-Run AI Timetable Generation</button>
-                <span id="ai-status-text" style="font-size: 0.9rem; opacity: 0.95;">Status: All constraints solved with 100% optimal distribution.</span>
-            </div>
-        </section>
-
-        <!-- College Directory -->
-        <section class="college-directory" id="colleges-section" style="margin-top: 32px;">
-            <div class="table-heading">
-                <h2>College Directory</h2>
-                <span id="college-count">5 Universities</span>
-            </div>
-            <div id="college-grid" class="college-grid"></div>
-        </section>
     </main>
-
-    <footer style="text-align: center; padding: 32px; color: var(--text-muted); font-size: 0.85rem;">
-        <p>College Timetable Management System &bull; Open Source on <a href="https://github.com/2503a52753-Purna/College_timetable_generator" style="color: var(--primary);">GitHub</a></p>
-    </footer>
-
-    <script src="js/app.js"></script>
 </body>
 </html>
