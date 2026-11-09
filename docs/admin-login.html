@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Timetable AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+    <main class="login-card">
+        <p class="eyebrow">Timetable AI</p>
+        <h1 id="login-title">Admin sign in</h1>
+        <p class="login-copy" id="login-copy">
+            Manage your college data and generate schedules securely.
+        </p>
+        <div id="form-error" class="form-error hidden" role="alert"></div>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" value="superadmin" required autofocus>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" value="admin123" required>
+            <button class="btn btn-login" type="submit">Sign in</button>
+        </form>
+        <p style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">Default: <code>superadmin</code> / <code>admin123</code></p>
+        <a class="back-link" href="timetables.html">View public timetables</a>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const role = params.get('role') || 'college';
+        const titleEl = document.getElementById('login-title');
+        const copyEl = document.getElementById('login-copy');
+
+        if (role === 'super') {
+            titleEl.textContent = 'Super Admin sign in';
+            copyEl.textContent = 'Manage all colleges, admins, and assignments securely.';
+        } else {
+            titleEl.textContent = 'College Admin sign in';
+            copyEl.textContent = 'Manage your college data and generate schedules securely.';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value.trim();
+            const p = document.getElementById('password').value;
+            const errEl = document.getElementById('form-error');
+
+            if ((u === 'superadmin' && p === 'admin123') || (u === 'admin' && p === 'admin123')) {
+                sessionStorage.setItem('is_admin', 'true');
+                sessionStorage.setItem('admin_username', u);
+                sessionStorage.setItem('admin_role', role);
+                window.location.href = 'admin.html';
+            } else {
+                errEl.textContent = 'Invalid administrator credentials. Try superadmin / admin123';
+                errEl.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

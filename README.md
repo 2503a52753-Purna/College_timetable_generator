@@ -43,3 +43,4 @@ Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 2. Connect this repository: `2503a52753-Purna/College_timetable_generator`.
 3. Render automatically provisions the web service via `render.yaml`.
 4. URL format: `https://timetable-generator.onrender.com`
+

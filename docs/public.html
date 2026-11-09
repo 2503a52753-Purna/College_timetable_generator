@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Timetables</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="public-page">
+    <main class="public-shell">
+        <header class="public-header">
+            <div>
+                <p class="eyebrow">College Timetable System</p>
+                <h1>Find your timetable</h1>
+                <p class="public-subtitle">Browse the latest published schedule by department, section, or faculty.</p>
+            </div>
+            <a class="admin-link" href="index.html">&larr; Back to welcome</a>
+        </header>
+        <section class="public-controls" aria-label="Timetable filters">
+            <div class="college-select-row">
+                <label>College<select id="filter-college"><option value="">Select college</option></select></label>
+            </div>
+            <div class="student-filters viewer-filters hidden">
+                <label>Department<select id="filter-dept"><option value="">Select department</option></select></label>
+                <label>Batch / Section<select id="filter-section" disabled><option value="">Select department first</option></select></label>
+            </div>
+            <div class="faculty-filters viewer-filters hidden">
+                <label>Faculty<select id="filter-faculty"><option value="">Select faculty</option></select></label>
+            </div>
+        </section>
+        <section class="viewer-choice" aria-label="Choose timetable type">
+            <h2>Who are you?</h2>
+            <div class="viewer-choice-buttons">
+                <button class="viewer-choice-button active" id="student-choice" type="button">Student</button>
+                <button class="viewer-choice-button" id="faculty-choice" type="button">Faculty</button>
+            </div>
+        </section>
+        <section class="college-directory" aria-label="College directory">
+            <div class="table-heading"><h2>College directory</h2><span id="college-count">0 colleges</span></div>
+            <div id="college-grid" class="college-grid"></div>
+        </section>
+        <section class="public-table-wrap">
+            <div class="table-heading"><h2>Published schedule</h2><span id="result-count"></span></div>
+            <div class="table-responsive">
+                <table class="data-table" id="public-timetable">
+                    <thead><tr><th>Time slot</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+                    <tbody id="timetable-matrix-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="js/public.js"></script>
+</body>
+</html>
